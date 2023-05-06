@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Square from "./Square"
 import chessService from "../service/chessService"
-import { SquareState } from "~/types"
+import type { SquareState } from "~/types"
 
 const Board = () => {
   const boardSize = '700px'
