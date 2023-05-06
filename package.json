@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "chess.js": "1.0.0-beta.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "unocss": "^0.51.8"
@@ -27,5 +28,6 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
-  }
+  },
+  "types": "chess.js/chess"
 }
