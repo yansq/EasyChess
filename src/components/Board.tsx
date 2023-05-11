@@ -1,17 +1,17 @@
-import { useState } from "react"
 import Square from "./Square"
 import chessService from "../service/chessService"
-import type { SquareState } from "~/types"
+import { useGameStore } from '../stores/gameStore.ts'
 
 const Board = () => {
   const boardSize = '700px'
 
+  const boardState = useGameStore((state) => state.boardState)
+  const setBoardState = useGameStore((state) => state.setBoardState)
+
   const startGame = () => {
     const initedBoard = chessService.newGame()
-    console.log(initedBoard)
+    setBoardState(initedBoard)
   }
-
-  const [boardState, setBoardState] = useState<SquareState[][]>(chessService.newGame())
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { Chess, Square } from "chess.js"
-import { SquareState } from "~/types"
+import { SquareState, Participator } from "~/types"
 
 let chess: Chess
 
@@ -22,8 +22,21 @@ const testGame = () => {
   console.log(chess.pgn())
 }
 
-const move = (from: string, to: string) => {
-  chess.move({ from, to })
+const move = (from: string, to: string, promotion?: string) => {
+  return chess.move({ from, to, promotion })
+}
+
+const isLegalMove = (from: string, to: string) => {
+  const possibleMoves = chess.moves({ square: from as Square, verbose: true })
+  const move = possibleMoves.find((move) => move.to === to)
+  if (move) {
+    console.log(move)
+    if (move.flags.includes('p')) {
+      throw new Error("need to promote")
+    }
+    return true
+  }
+  return false
 }
 
 const assembleBoard = (board: (SquareState | null)[][]): SquareState[][] => {
@@ -41,4 +54,12 @@ const assembleBoard = (board: (SquareState | null)[][]): SquareState[][] => {
   return board as SquareState[][]
 }
 
-export default { testGame, getBoard ,newGame, move }
+const isYourPiece = (square: Square | '', trun: Participator) => {
+  const piece = chess.get(square as Square)
+  if (!piece) {
+    return false
+  }
+  return piece.color == trun
+}
+
+export default { testGame, getBoard ,newGame, move, isYourPiece, isLegalMove }

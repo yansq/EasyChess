@@ -5,3 +5,8 @@ export interface SquareState {
   type: PieceSymbol | '';
   color: Color | '';
 }
+
+export enum Participator {
+  White = 'w',
+  Black = 'b',
+}
