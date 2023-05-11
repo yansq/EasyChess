@@ -7,10 +7,14 @@ const Board = () => {
 
   const boardState = useGameStore((state) => state.boardState)
   const setBoardState = useGameStore((state) => state.setBoardState)
+  const setSelectedSquare = useGameStore((state) => state.selectSquare)
+  const initTurn = useGameStore((state) => state.initTurn)
 
   const startGame = () => {
     const initedBoard = chessService.newGame()
     setBoardState(initedBoard)
+    setSelectedSquare('')
+    initTurn()
   }
 
   return (
@@ -22,7 +26,7 @@ const Board = () => {
           ))
         ))}
       </div>
-      <button className="btn" onClick={startGame}>Play</button>
+      <button className="btn mt-4" onClick={startGame}>Play</button>
     </>
   )
 }

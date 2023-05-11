@@ -9,12 +9,10 @@ interface GameState {
 
   whoseTurn: Participator
   passTurn: () => void
+  initTurn: () => void
 
   selectedSquare: Square | ''
   selectSquare: (square: Square | '') => void
-
-  bears: number
-  increase: () => void
 }
 
 export const useGameStore = create<GameState>((set) => ({
@@ -23,20 +21,10 @@ export const useGameStore = create<GameState>((set) => ({
 
   whoseTurn: Participator.White,
   passTurn: () => set((state) => ({ whoseTurn: state.whoseTurn === Participator.White ? Participator.Black : Participator.White })),
-    
-  move: () => set((state) => {
-    console.log(state)
-    return { whoseTurn: state.whoseTurn === Participator.White 
-        ? Participator.Black 
-        : Participator.White }
-  }),
+  initTurn: () => set({ whoseTurn: Participator.White }),
 
   selectedSquare: '',
   selectSquare: (square) => set({
     selectedSquare: square,
   }),
-
-  bears: 0,
-  increase: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBear: () => set({ bears: 0 }),
 }))

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { SquareState } from '../types'
+import { SquareState, MoveResult } from '../types'
 import { PieceSymbol, Color } from 'chess.js'
 import { useGameStore } from '../stores/gameStore.ts'
 import chessService from "../service/chessService"
@@ -33,26 +33,33 @@ const Square = ({ square, type, color }: SquareState) => {
       try {
         if (chessService.isLegalMove(selectedSquare, square)) {
           const moveResult = chessService.move(selectedSquare ,square)
-          console.log('moveResult: ' + moveResult)
-          setSelectedSquare('')
-          passTurn()
-          setBoardState(chessService.getBoard())
+          handleResult(moveResult)
         }
       } catch (error) {
         // TODO: choose promotion piece
-        chessService.move(selectedSquare, square, 'q')
-        setSelectedSquare('')
-        passTurn()
-        setBoardState(chessService.getBoard())
+        const moveResult = chessService.move(selectedSquare, square, 'q')
+        handleResult(moveResult)
         console.warn(error)
       }
     }
   }
 
+  const handleResult = (moveResult: MoveResult) => {
+    if (moveResult == MoveResult.Draw) {
+      window.prompt("It is a draw!")
+    }
+    if (moveResult == MoveResult.CheckMate) {
+      window.prompt(true + " wins!")
+    }
+    setSelectedSquare('')
+    passTurn()
+    setBoardState(chessService.getBoard())
+  }
+
   return (
     <div 
         style={{backgroundImage: pieceImg}} 
-        className={"w-1/8 h-1/8 bg-cover box-border " 
+        className={"w-1/8 h-1/8 bg-cover box-border relative " 
             + bgColor + (selectedSquare === square ? " border-solid border-2" : "")}
         onClick={clickSquare}>
       {square}

@@ -1,5 +1,5 @@
 import { Chess, Square } from "chess.js"
-import { SquareState, Participator } from "~/types"
+import { SquareState, Participator, MoveResult } from "../types"
 
 let chess: Chess
 
@@ -12,18 +12,16 @@ const newGame = () => {
   return getBoard()
 }
 
-const testGame = () => {
-  newGame()
-  while (!chess.isGameOver()) {
-    const moves = chess.moves()
-    const move = moves[Math.floor(Math.random() * moves.length)]
-    chess.move(move)
+const move = (from: string, to: string, promotion?: string): MoveResult  => {
+  const moveInfo = chess.move({ from, to, promotion })
+  console.log(moveInfo)
+  if (chess.isDraw()) {
+    return MoveResult.Draw
   }
-  console.log(chess.pgn())
-}
-
-const move = (from: string, to: string, promotion?: string) => {
-  return chess.move({ from, to, promotion })
+  if (chess.isCheckmate()) {
+    return MoveResult.CheckMate
+  }
+  return MoveResult.Common
 }
 
 const isLegalMove = (from: string, to: string) => {
@@ -62,4 +60,4 @@ const isYourPiece = (square: Square | '', trun: Participator) => {
   return piece.color == trun
 }
 
-export default { testGame, getBoard ,newGame, move, isYourPiece, isLegalMove }
+export default { getBoard ,newGame, move, isYourPiece, isLegalMove }

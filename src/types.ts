@@ -10,3 +10,9 @@ export enum Participator {
   White = 'w',
   Black = 'b',
 }
+
+export enum MoveResult {
+  Common,
+  Draw,
+  CheckMate
+}
