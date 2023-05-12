@@ -56,12 +56,23 @@ const Square = ({ square, type, color }: SquareState) => {
     setBoardState(chessService.getBoard())
   }
 
+  const handleDragStart = (e: React.DragEvent) => {
+    console.log(e)
+  }
+
+  const handleDragEnd = (e: React.DragEvent) => {
+    console.log(e)
+  }
+
   return (
     <div 
+        w-1-divided-by-8 h-1-divided-by-8
+        bg-cover box-border relative
         style={{backgroundImage: pieceImg}} 
-        className={"w-1/8 h-1/8 bg-cover box-border relative " 
-            + bgColor + (selectedSquare === square ? " border-solid border-2" : "")}
-        onClick={clickSquare}>
+        className={bgColor + (selectedSquare === square ? " border-solid border-2" : "")}
+        onClick={clickSquare}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}>
       {square}
     </div>
   )

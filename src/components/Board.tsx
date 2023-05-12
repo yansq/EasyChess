@@ -19,14 +19,14 @@ const Board = () => {
 
   return (
     <>
-      <div className="flex flex-wrap" style={{width: boardSize, height: boardSize}}>
+      <div flex="~ wrap"  style={{width: boardSize, height: boardSize}}>
         {boardState.map((stateArr) => (
           stateArr.map((state) => (
             <Square key={state.square} {...state} />
           ))
         ))}
       </div>
-      <button className="btn mt-4" onClick={startGame}>Play</button>
+      <button mt-4 main-btn onClick={startGame}>Play</button>
     </>
   )
 }

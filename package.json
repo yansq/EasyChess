@@ -21,6 +21,7 @@
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
+    "@unocss/preset-attributify": "^0.51.12",
     "@unocss/preset-uno": "^0.51.8",
     "@unocss/transformer-attributify-jsx": "^0.51.8",
     "@vitejs/plugin-react": "^4.0.0",

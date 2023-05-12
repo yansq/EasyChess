@@ -30,6 +30,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^5.57.1
     version: registry.npmmirror.com/@typescript-eslint/parser@5.57.1(eslint@8.38.0)(typescript@5.0.2)
+  '@unocss/preset-attributify':
+    specifier: ^0.51.12
+    version: registry.npmmirror.com/@unocss/preset-attributify@0.51.12
   '@unocss/preset-uno':
     specifier: ^0.51.8
     version: registry.npmmirror.com/@unocss/preset-uno@0.51.8
@@ -1004,6 +1007,12 @@ packages:
       unconfig: registry.npmmirror.com/unconfig@0.3.7
     dev: false
 
+  registry.npmmirror.com/@unocss/core@0.51.12:
+    resolution: {integrity: sha512-H8mLy6ZKu9nGZe5jlHhLPIVwh2G3cCDSBGl5aIZJFI1qpmDC+Zb3iueBGigNpX75IzkjaGKZiK1WUWq8TShjtA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/core/-/core-0.51.12.tgz}
+    name: '@unocss/core'
+    version: 0.51.12
+    dev: true
+
   registry.npmmirror.com/@unocss/core@0.51.8:
     resolution: {integrity: sha512-myHRKBphEN3h0OnsUhg2JaFKjFGfqF/jmmzZCCMNU5UmxbheZomXANNLYXVgEP6LHvd4xAF0DEzrOBcDPLf0HQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/core/-/core-0.51.8.tgz}
     name: '@unocss/core'
@@ -1041,6 +1050,14 @@ packages:
       magic-string: registry.npmmirror.com/magic-string@0.30.0
       postcss: registry.npmmirror.com/postcss@8.4.23
     dev: false
+
+  registry.npmmirror.com/@unocss/preset-attributify@0.51.12:
+    resolution: {integrity: sha512-cTEfMEQQo9fK8++c3Z5kgTXfRotoCezekGQT3obiNzJsPtijCn6bfSNqIiVF+4/GyzFBtwe8VxnOpuGa/stytA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/preset-attributify/-/preset-attributify-0.51.12.tgz}
+    name: '@unocss/preset-attributify'
+    version: 0.51.12
+    dependencies:
+      '@unocss/core': registry.npmmirror.com/@unocss/core@0.51.12
+    dev: true
 
   registry.npmmirror.com/@unocss/preset-attributify@0.51.8:
     resolution: {integrity: sha512-2JkGrutvVwvXAC48vCiEpiYLMXlV1rDigR1lwRrKxQC1s/1/j4Wei2RqY0649CkpWZBvdiJ5oPF38NV9pWOnKw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/preset-attributify/-/preset-attributify-0.51.8.tgz}

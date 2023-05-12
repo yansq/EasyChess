@@ -3,8 +3,12 @@ import { presetUno, presetAttributify } from 'unocss'
 import transformetAttributifyJsx from '@unocss/transformer-attributify-jsx'
 
 export default defineConfig({
+  preprocess: (matcher) => matcher
+		.replace(/-?minus-?/, "-")
+		.replace(/-?percent-?/, "%")
+		.replace(/-?divided-by-?/, "/"),
   shortcuts: [
-    ['btn', 'px-4 py-1 rounded inline-block bg-teal-700 text-white cursor-pointer !outline-none hover:bg-teal-800 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
+    {'main-btn': 'px-4 py-1 rounded inline-block bg-teal-700 text-white cursor-pointer !outline-none hover:bg-teal-800 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'},
   ],
   presets: [
     presetUno(),
